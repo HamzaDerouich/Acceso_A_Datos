@@ -1,0 +1,16 @@
+# Ignorar carpetas de compilación
+bin/
+build/
+
+# Ignorar archivos temporales de Eclipse o del sistema operativo
+*.tmp
+*.log
+*.bak
+
+# Ignorar archivos del sistema operativo (macOS y Windows)
+.DS_Store
+Thumbs.db
+
+# Mantener archivos importantes de Eclipse
+!.classpath
+!.project
