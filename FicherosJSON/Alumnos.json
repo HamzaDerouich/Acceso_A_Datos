@@ -1,0 +1,22 @@
+[
+    {
+        "nombre": "Juan Pérez",
+        "edad": 20,
+        "dni": "12345678A"
+    },
+    {
+        "nombre": "María Gómez",
+        "edad": 22,
+        "dni": "87654321B"
+    },
+    {
+        "nombre": "Luis Rodríguez",
+        "edad": 19,
+        "dni": "11223344C"
+    },
+    {
+        "nombre": "Ana Martínez",
+        "edad": 21,
+        "dni": "44332211D"
+    }
+]
