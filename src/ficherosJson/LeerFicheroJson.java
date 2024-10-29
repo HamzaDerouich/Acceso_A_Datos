@@ -38,8 +38,6 @@ public class LeerFicheroJson {
 			e.printStackTrace();
 
 		}
-
-		
 	}
 
 	public static void main(String[] args) 
