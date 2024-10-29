@@ -1,0 +1,13 @@
+[ {
+  "nombre" : "Pedro",
+  "edad" : 23,
+  "dni" : "21315321"
+}, {
+  "nombre" : "Fernando",
+  "edad" : 45,
+  "dni" : "123174"
+}, {
+  "nombre" : "Juan",
+  "edad" : 65,
+  "dni" : "454546563"
+} ]
