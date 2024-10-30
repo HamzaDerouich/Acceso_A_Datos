@@ -1,0 +1,144 @@
+
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Perros>
+    <Perro>
+        <Nombre>Rex</Nombre>
+        <Edad>5</Edad>
+        <Peso>30.5</Peso>
+        <Descripcion> Perro muy leal y protector.</Descripcion>
+        <Raza> Pastor Alemán</Raza>
+    </Perro>
+    <Perro>
+        <Nombre>Bella</Nombre>
+        <Edad>3</Edad>
+        <Peso>25.0</Peso>
+        <Descripcion> Amigable y juguetona.</Descripcion>
+        <Raza> Labrador</Raza>
+    </Perro>
+    <Perro>
+        <Nombre>Max</Nombre>
+        <Edad>4</Edad>
+        <Peso>10.0</Peso>
+        <Descripcion> Curioso y activo.</Descripcion>
+        <Raza> Beagle</Raza>
+    </Perro>
+    <Perro>
+        <Nombre>Luna</Nombre>
+        <Edad>2</Edad>
+        <Peso>12.5</Peso>
+        <Descripcion> Cariñosa y tranquila.</Descripcion>
+        <Raza> Bulldog Francés</Raza>
+    </Perro>
+    <Perro>
+        <Nombre>Rocky</Nombre>
+        <Edad>6</Edad>
+        <Peso>40.0</Peso>
+        <Descripcion> Protector y valiente.</Descripcion>
+        <Raza> Rottweiler</Raza>
+    </Perro>
+    <Perro>
+        <Nombre>Daisy</Nombre>
+        <Edad>3</Edad>
+        <Peso>8.0</Peso>
+        <Descripcion> Inteligente y elegante.</Descripcion>
+        <Raza> Poodle</Raza>
+    </Perro>
+    <Perro>
+        <Nombre>Charlie</Nombre>
+        <Edad>5</Edad>
+        <Peso>9.0</Peso>
+        <Descripcion> Divertido y terco.</Descripcion>
+        <Raza> Dachshund</Raza>
+    </Perro>
+    <Perro>
+        <Nombre>Molly</Nombre>
+        <Edad>4</Edad>
+        <Peso>13.5</Peso>
+        <Descripcion> Amigable y cariñosa.</Descripcion>
+        <Raza> Cocker Spaniel</Raza>
+    </Perro>
+    <Perro>
+        <Nombre>Duke</Nombre>
+        <Edad>2</Edad>
+        <Peso>29.0</Peso>
+        <Descripcion> Leal y sociable.</Descripcion>
+        <Raza> Golden Retriever</Raza>
+    </Perro>
+    <Perro>
+        <Nombre>Sadie</Nombre>
+        <Edad>1</Edad>
+        <Peso>2.5</Peso>
+        <Descripcion> Pequeña pero valiente.</Descripcion>
+        <Raza> Chihuahua</Raza>
+    </Perro>
+    <Perro>
+        <Nombre>Zeus</Nombre>
+        <Edad>3</Edad>
+        <Peso>35.0</Peso>
+        <Descripcion> Amigable y enérgico.</Descripcion>
+        <Raza> Pitbull</Raza>
+    </Perro>
+    <Perro>
+        <Nombre>Coco</Nombre>
+        <Edad>6</Edad>
+        <Peso>6.0</Peso>
+        <Descripcion> Juguetona y cariñosa.</Descripcion>
+        <Raza> Shih Tzu</Raza>
+    </Perro>
+    <Perro>
+        <Nombre>Oscar</Nombre>
+        <Edad>4</Edad>
+        <Peso>30.0</Peso>
+        <Descripcion> Energético y juguetón.</Descripcion>
+        <Raza> Boxer</Raza>
+    </Perro>
+    <Perro>
+        <Nombre>Bella</Nombre>
+        <Edad>2</Edad>
+        <Peso>5.0</Peso>
+        <Descripcion> Dulce y cariñosa.</Descripcion>
+        <Raza> Bichón Frisé</Raza>
+    </Perro>
+    <Perro>
+        <Nombre>Leo</Nombre>
+        <Edad>3</Edad>
+        <Peso>28.0</Peso>
+        <Descripcion> Activo y aventurero.</Descripcion>
+        <Raza> Siberian Husky</Raza>
+    </Perro>
+    <Perro>
+        <Nombre>Ruby</Nombre>
+        <Edad>5</Edad>
+        <Peso>4.5</Peso>
+        <Descripcion> Pequeña y adorable.</Descripcion>
+        <Raza> Maltés</Raza>
+    </Perro>
+    <Perro>
+        <Nombre>Bruno</Nombre>
+        <Edad>6</Edad>
+        <Peso>35.0</Peso>
+        <Descripcion> Fiel y protector.</Descripcion>
+        <Raza> Doberman</Raza>
+    </Perro>
+    <Perro>
+        <Nombre>Nala</Nombre>
+        <Edad>2</Edad>
+        <Peso>22.0</Peso>
+        <Descripcion> Inteligente y enérgica.</Descripcion>
+        <Raza> Border Collie</Raza>
+    </Perro>
+    <Perro>
+        <Nombre>Toby</Nombre>
+        <Edad>4</Edad>
+        <Peso>3.0</Peso>
+        <Descripcion> Pequeño y audaz.</Descripcion>
+        <Raza> Yorkshire Terrier</Raza>
+    </Perro>
+    <Perro>
+        <Nombre>Stella</Nombre>
+        <Edad>3</Edad>
+        <Peso>12.0</Peso>
+        <Descripcion> Amigable y juguetona.</Descripcion>
+        <Raza> Cocker Spaniel</Raza>
+    </Perro>
+</Perros>

@@ -1,0 +1,20 @@
+Rex, Pastor Alemán, 5, 30.5, Verdadero, Perro muy leal y protector.
+Bella, Labrador, 3, 25.0, Verdadero, Amigable y juguetona.
+Max, Beagle, 4, 10.0, Verdadero, Curioso y activo.
+Luna, Bulldog Francés, 2, 12.5, Verdadero, Cariñosa y tranquila.
+Rocky, Rottweiler, 6, 40.0, Falso, Protector y valiente.
+Daisy, Poodle, 3, 8.0, Verdadero, Inteligente y elegante.
+Charlie, Dachshund, 5, 9.0, Verdadero, Divertido y terco.
+Molly, Cocker Spaniel, 4, 13.5, Verdadero, Amigable y cariñosa.
+Duke, Golden Retriever, 2, 29.0, Verdadero, Leal y sociable.
+Sadie, Chihuahua, 1, 2.5, Verdadero, Pequeña pero valiente.
+Zeus, Pitbull, 3, 35.0, Verdadero, Amigable y enérgico.
+Coco, Shih Tzu, 6, 6.0, Verdadero, Juguetona y cariñosa.
+Oscar, Boxer, 4, 30.0, Falso, Energético y juguetón.
+Bella, Bichón Frisé, 2, 5.0, Verdadero, Dulce y cariñosa.
+Leo, Siberian Husky, 3, 28.0, Verdadero, Activo y aventurero.
+Ruby, Maltés, 5, 4.5, Verdadero, Pequeña y adorable.
+Bruno, Doberman, 6, 35.0, Falso, Fiel y protector.
+Nala, Border Collie, 2, 22.0, Verdadero, Inteligente y enérgica.
+Toby, Yorkshire Terrier, 4, 3.0, Verdadero, Pequeño y audaz.
+Stella, Cocker Spaniel, 3, 12.0, Verdadero, Amigable y juguetona.

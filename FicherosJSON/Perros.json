@@ -1,0 +1,81 @@
+[ {
+  "nombre" : "Rex",
+  "edad" : 5,
+  "peso" : 30.5
+}, {
+  "nombre" : "Bella",
+  "edad" : 3,
+  "peso" : 25.0
+}, {
+  "nombre" : "Max",
+  "edad" : 4,
+  "peso" : 10.0
+}, {
+  "nombre" : "Luna",
+  "edad" : 2,
+  "peso" : 12.5
+}, {
+  "nombre" : "Rocky",
+  "edad" : 6,
+  "peso" : 40.0
+}, {
+  "nombre" : "Daisy",
+  "edad" : 3,
+  "peso" : 8.0
+}, {
+  "nombre" : "Charlie",
+  "edad" : 5,
+  "peso" : 9.0
+}, {
+  "nombre" : "Molly",
+  "edad" : 4,
+  "peso" : 13.5
+}, {
+  "nombre" : "Duke",
+  "edad" : 2,
+  "peso" : 29.0
+}, {
+  "nombre" : "Sadie",
+  "edad" : 1,
+  "peso" : 2.5
+}, {
+  "nombre" : "Zeus",
+  "edad" : 3,
+  "peso" : 35.0
+}, {
+  "nombre" : "Coco",
+  "edad" : 6,
+  "peso" : 6.0
+}, {
+  "nombre" : "Oscar",
+  "edad" : 4,
+  "peso" : 30.0
+}, {
+  "nombre" : "Bella",
+  "edad" : 2,
+  "peso" : 5.0
+}, {
+  "nombre" : "Leo",
+  "edad" : 3,
+  "peso" : 28.0
+}, {
+  "nombre" : "Ruby",
+  "edad" : 5,
+  "peso" : 4.5
+}, {
+  "nombre" : "Bruno",
+  "edad" : 6,
+  "peso" : 35.0
+}, {
+  "nombre" : "Nala",
+  "edad" : 2,
+  "peso" : 22.0
+}, {
+  "nombre" : "Toby",
+  "edad" : 4,
+  "peso" : 3.0
+}, {
+  "nombre" : "Stella",
+  "edad" : 3,
+  "peso" : 12.0
+} ]

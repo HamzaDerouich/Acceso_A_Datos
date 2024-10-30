@@ -29,7 +29,7 @@ public class Ejercicios {
 
 		File ficheroDirectorio = new File(rutaFichero);
 
-		Boolean existe = ficheroDirectorio.exists();
+		boolean existe = ficheroDirectorio.exists();
 		if (!existe) {
 			System.out.println("No existe el fichero!!");
 		} else {
@@ -52,7 +52,7 @@ public class Ejercicios {
 
 		File ficheroDirectorio = new File(rutaFichero);
 
-		Boolean existe = ficheroDirectorio.exists();
+		boolean existe = ficheroDirectorio.exists();
 		if (!existe) {
 			System.out.println("No existe el fichero!!");
 		} else {
@@ -80,7 +80,7 @@ public class Ejercicios {
 
 		File Directorio = new File(rutaFichero);
 
-		Boolean existe = Directorio.exists();
+		boolean existe = Directorio.exists();
 		if (!existe) {
 			if (Directorio.mkdir()) {
 				System.out.println("Directorio creado correctamente!");
@@ -106,7 +106,7 @@ public class Ejercicios {
 
 		File fichero = new File(rutaFichero);
 
-		Boolean existe = fichero.exists();
+		boolean existe = fichero.exists();
 		if (!existe) {
 			try {
 				if (fichero.createNewFile()) {
