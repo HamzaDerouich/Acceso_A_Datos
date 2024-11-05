@@ -17,5 +17,20 @@
 	<classpathentry kind="lib" path="Librerias/Libreria Jackson/stax2-api-4.2.2.jar"/>
 	<classpathentry kind="lib" path="Librerias/Libreria Jackson/woodstox-core-6.2.6.jar"/>
 	<classpathentry kind="lib" path="Librerias/Libreria Jackson/woodstox-core-7.0.0.jar"/>
+	<classpathentry kind="lib" path="Librerias/Libreria Jaxb/codemodel.jar"/>
+	<classpathentry kind="lib" path="Librerias/Libreria Jaxb/dtd-parser.jar"/>
+	<classpathentry kind="lib" path="Librerias/Libreria Jaxb/FastInfoset.jar"/>
+	<classpathentry kind="lib" path="Librerias/Libreria Jaxb/istack-commons-runtime.jar"/>
+	<classpathentry kind="lib" path="Librerias/Libreria Jaxb/istack-commons-tools.jar"/>
+	<classpathentry kind="lib" path="Librerias/Libreria Jaxb/javax.activation-api.jar"/>
+	<classpathentry kind="lib" path="Librerias/Libreria Jaxb/jaxb-api.jar"/>
+	<classpathentry kind="lib" path="Librerias/Libreria Jaxb/jaxb-jxc.jar"/>
+	<classpathentry kind="lib" path="Librerias/Libreria Jaxb/jaxb-runtime.jar"/>
+	<classpathentry kind="lib" path="Librerias/Libreria Jaxb/jaxb-xjc.jar"/>
+	<classpathentry kind="lib" path="Librerias/Libreria Jaxb/relaxng-datatype.jar"/>
+	<classpathentry kind="lib" path="Librerias/Libreria Jaxb/rngom.jar"/>
+	<classpathentry kind="lib" path="Librerias/Libreria Jaxb/stax-ex.jar"/>
+	<classpathentry kind="lib" path="Librerias/Libreria Jaxb/txw2.jar"/>
+	<classpathentry kind="lib" path="Librerias/Libreria Jaxb/xsom.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
