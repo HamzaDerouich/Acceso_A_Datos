@@ -32,5 +32,6 @@
 	<classpathentry kind="lib" path="Librerias/Libreria Jaxb/stax-ex.jar"/>
 	<classpathentry kind="lib" path="Librerias/Libreria Jaxb/txw2.jar"/>
 	<classpathentry kind="lib" path="Librerias/Libreria Jaxb/xsom.jar"/>
+	<classpathentry kind="lib" path="Librerias/JDBC CONECTOR/mysql-connector-j-9.1.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
