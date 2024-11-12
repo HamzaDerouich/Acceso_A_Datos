@@ -10,85 +10,82 @@ import java.io.IOException;
 
 public class ConexionJdbc {
 
-    // Propiedades de configuración de la base de datos
-	
-    private static Properties propiedades = new Properties();
-    
-    // Configuraciones de la base de datos
-    
-    private static String URL = "";
-    private static String USER = "";
-    private static String PASSWORD = "";
-    private static String DRIVER_CLASS_NAME = "";
+	// Propiedades de configuración de la base de datos
 
-    // Método para cargar las propiedades desde un archivo
-    
-    private static void cargarPropiedades() throws IOException {
+	private static Properties propiedades = new Properties();
 
-    	try (FileInputStream fis = new FileInputStream("Properties" + File.separator + "datos_conexion.properties")) {
-            propiedades.load(fis);
-            
-            // Cargar las propiedades específicas
-            
-            URL = propiedades.getProperty("db.url");
-            USER = propiedades.getProperty("db.username");
-            PASSWORD = propiedades.getProperty("db.password");
-            DRIVER_CLASS_NAME = propiedades.getProperty("db.driverClassName");
-        }
-    }
+	// Configuraciones de la base de datos
 
-    // Método para obtener una conexión a la base de datos
-    
-    public static Connection conexion() {
-    	
-        Connection conexion = null;
+	private static String URL = "";
+	private static String USER = "";
+	private static String PASSWORD = "";
+	private static String DRIVER_CLASS_NAME = "";
 
-        try {
-            // Cargar las propiedades
-        	
-            cargarPropiedades();
+	// Método para cargar las propiedades desde un archivo
 
-            // Cargar el controlador JDBC
-            
-            Class.forName(DRIVER_CLASS_NAME);
-            
-            // Establecer la conexión usando DriverManager
-            
-            conexion = DriverManager.getConnection(URL, USER, PASSWORD);
-            
-            
-        } catch (IOException e) {
-            System.out.println("Error al cargar el archivo de propiedades: " + e.getMessage());
-        } catch (ClassNotFoundException e) {
-            System.out.println("Error al cargar el controlador JDBC: " + e.getMessage());
-        } catch (SQLException e) {
-            System.out.println("Error al establecer la conexión: " + e.getMessage());
-        }
-        
-        return conexion;
-    }
-    
-    public static void CargarConexion()
-    {
+	private static void cargarPropiedades() throws IOException {
 
-    	Connection conn = conexion();
-        
-        if (conn != null) {
-            try {
-            	System.out.println("Conexion Realizado con exito!!");
-            	System.out.println("Operaciones sobre la base de datos...");
-                conn.close();
-                
-            } catch (SQLException e) {
-                System.out.println("Error al trabajar con la conexión: " + e.getMessage());
-            }
-        }
-    }
+		try (FileInputStream fis = new FileInputStream("Properties" + File.separator + "datos_conexion.properties")) {
+			propiedades.load(fis);
 
-    public static void main(String[] args) 
-    {
-        
-        conexion();
-        CargarConexion();
-    }
+			// Cargar las propiedades específicas
+
+			URL = propiedades.getProperty("db.url");
+			USER = propiedades.getProperty("db.username");
+			PASSWORD = propiedades.getProperty("db.password");
+			DRIVER_CLASS_NAME = propiedades.getProperty("db.driverClassName");
+		}
+	}
+
+	// Método para obtener una conexión a la base de datos
+
+	public static Connection conexion() {
+
+		Connection conexion = null;
+
+		try {
+			// Cargar las propiedades
+
+			cargarPropiedades();
+
+			// Cargar el controlador JDBC
+
+			Class.forName(DRIVER_CLASS_NAME);
+
+			// Establecer la conexión usando DriverManager
+
+			conexion = DriverManager.getConnection(URL, USER, PASSWORD);
+
+		} catch (IOException e) {
+			System.out.println("Error al cargar el archivo de propiedades: " + e.getMessage());
+		} catch (ClassNotFoundException e) {
+			System.out.println("Error al cargar el controlador JDBC: " + e.getMessage());
+		} catch (SQLException e) {
+			System.out.println("Error al establecer la conexión: " + e.getMessage());
+		}
+
+		return conexion;
+	}
+
+	public static void CargarConexion() {
+
+		Connection conn = conexion();
+
+		if (conn != null) {
+			try {
+				System.out.println("Conexion Realizado con exito!!");
+				System.out.println("Operaciones sobre la base de datos...");
+				conn.close();
+
+			} catch (SQLException e) {
+				System.out.println("Error al trabajar con la conexión: " + e.getMessage());
+			}
+		}
+	}
+
+	public static void main(String[] args) {
+
+		conexion();
+		CargarConexion();
+	}
 }
