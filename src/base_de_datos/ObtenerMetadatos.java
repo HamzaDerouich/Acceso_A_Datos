@@ -1,6 +1,5 @@
-package base_de_datos.Ejercicio5;
+package base_de_datos;
 
-import java.sql.Statement;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -9,13 +8,9 @@ import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Properties;
 
-import base_de_datos.Persona;
-
-public class Ejercicio5 {
+public class ObtenerMetadatos {
 
 	// Propiedades de configuración de la base de datos
 
@@ -27,8 +22,7 @@ public class Ejercicio5 {
 	private static String USER = "";
 	private static String PASSWORD = "";
 	private static String DRIVER_CLASS_NAME = "";
-    private static List<Persona> listPersonas = new ArrayList<Persona>();
-	
+
 	// Método para cargar las propiedades desde un archivo
 
 	private static String[] cargarPropiedades() throws IOException {
@@ -84,6 +78,23 @@ public class Ejercicio5 {
 		return conexion;
 	}
 
+	public static Connection CargarConexion() {
+
+		Connection conn = conexion();
+
+		if (conn != null) {
+			try {
+				System.out.println("Conexion Realizado con exito!!");
+				System.out.println("Operaciones sobre la base de datos...");
+				conn.close();
+
+			} catch (SQLException e) {
+				System.out.println("Error al trabajar con la conexión: " + e.getMessage());
+			}
+		}
+		
+		return conn;
+	}
 
 	public static void SelectMetaDatos() 
 	{
@@ -91,65 +102,40 @@ public class Ejercicio5 {
 		
 		DatabaseMetaData datos;
 		try {
-			
 			datos = conexion.getMetaData();
-			String gestor = datos.getDatabaseProductName();
-			String driver = datos.getDriverName();
-			String url = datos.getURL();
-			String usuario = datos.getUserName();
-			ArrayList<String> listdo_tablas = new ArrayList<String>() ;
-			
-			try {
-
-				String[] datos_coneString = cargarPropiedades();
-				String consulta = "SHOW TABLES";
-				int indice = 1;
-				try (Connection connection = DriverManager.getConnection(datos_coneString[0], datos_coneString[1],
-						datos_coneString[2]);
-						Statement statement = connection.createStatement();
-						ResultSet resultSet = statement.executeQuery(consulta)) {
-					while (resultSet.next()) 
-					{
-					    listdo_tablas.add(resultSet.getString("TABLES_IN_PERSONAS"));
-					    indice++;
-					}
-				} catch (SQLException e) {
-					e.printStackTrace(); 
-				}
-
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			
-			
 		
-			Metadatos meta_datos = new Metadatos(gestor, driver, url, usuario, listdo_tablas);
-			
-			MostrarDatos(meta_datos);
-			
-			
+		System.out.println("Producto BD: " + datos.getDatabaseProductName());
+		// Obtener información de la tabla "persona"
+		ResultSet tablas = datos.getTables(null, null, "PERSONA", null);
+		while (tablas.next()) {
+		System.out.println("Tabla: " + tablas.getString("TABLE_NAME"));
+		}
+		// Obtener y mostrar metadatos de los campos de la tabla "persona"
+		ResultSet campos = datos.getColumns(null, null, "PERSONA", null);
+		while (campos.next()) {
+		System.out.println("Campo: " + campos.getString("COLUMN_NAME"));
+		}
+		// Obtener y mostrar metadatos de las claves de la tabla "persona"
+		ResultSet clavePrimaria = datos.getPrimaryKeys(null, null, "persona");
+		while (clavePrimaria.next()) {
+		System.out.println("Clave primaria: " + clavePrimaria.getString("COLUMN_NAME"));
+		}
+		ResultSet claveForanea = datos.getImportedKeys(null, null, "persona");
+		while (clavePrimaria.next()) {
+		System.out.println("Clave foranea: " + claveForanea.getString("COLUMN_NAME"));
+		}
+		
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 	}
-	private static void MostrarDatos( Metadatos meta) 
-	{
-		System.out.println("____Metadatos_Base_De_Datos_______");
-		System.out.println(meta);  
-		System.out.println("Tablas:");
 
-		for (String nombre : meta.getNombres_tablas()) {
-		    System.out.println("\tNombre: " + nombre);  
-		}
-		System.out.println("________________________________________________");
+	public static void main(String[] args) {
 
-	}
-
-	public static void main(String[] args)
-	{
-			
+		//conexion();
+		//CargarConexion();
 		SelectMetaDatos();
-		
 	}
 }

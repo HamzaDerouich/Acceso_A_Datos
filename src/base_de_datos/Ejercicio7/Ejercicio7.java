@@ -1,19 +1,21 @@
-package base_de_datos;
+package base_de_datos.Ejercicio7;
 
 import java.sql.Statement;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-public class ConexionJdbc {
+import base_de_datos.Persona;
+
+public class Ejercicio7 {
 
 	// Propiedades de configuración de la base de datos
 
@@ -25,8 +27,8 @@ public class ConexionJdbc {
 	private static String USER = "";
 	private static String PASSWORD = "";
 	private static String DRIVER_CLASS_NAME = "";
-    private static List<Persona> listPersonas = new ArrayList<Persona>();
-	
+	private static List<Persona> listPersonas = new ArrayList<Persona>();
+
 	// Método para cargar las propiedades desde un archivo
 
 	private static String[] cargarPropiedades() throws IOException {
@@ -82,41 +84,81 @@ public class ConexionJdbc {
 		return conexion;
 	}
 
-	public static void CargarConexion() {
+	// Método para obtener metadatos y datos de la tabla 'Modulo'
 
-		Connection conn = conexion();
+	public static void SelectMetaDatos() {
+		try {
+			// Obtener los metadatos de la base de datos
+			DatabaseMetaData metaData = conexion().getMetaData();
+			ResultSet columnas = metaData.getColumns(null, null, "modulo", null);
 
-		if (conn != null) {
-			try {
-				System.out.println("Conexion Realizado con exito!!");
-				System.out.println("Operaciones sobre la base de datos...");
-				conn.close();
+			System.out.println("TABLA: Modulo");
+			System.out.println("INFORMACIÓN");
 
-			} catch (SQLException e) {
-				System.out.println("Error al trabajar con la conexión: " + e.getMessage());
+			// Número de columnas
+
+			int numeroColumnas = 0;
+			while (columnas.next()) {
+				numeroColumnas++;
 			}
-		}
+
+			System.out.println("Número de columnas: " + numeroColumnas);
+			System.out.println("COLUMNA\tTIPO");
+
+			// Mostrar los nombres de las columnas y sus tipos
+
+			columnas.beforeFirst();
+			while (columnas.next()) {
+				String nombreColumna = columnas.getString("COLUMN_NAME");
+				String tipoColumna = columnas.getString("TYPE_NAME");
+				System.out.println(nombreColumna + "\t" + tipoColumna);
+			}
+
+			// Obtener los datos de la tabla 'Modulo'
+
+			Statement stmt = conexion().createStatement();
+			ResultSet registros = stmt.executeQuery("SELECT * FROM modulo");
+
+			System.out.println("\nDATOS");
+
+			// Número de registros
+
+			int numeroRegistros = 0;
+			while (registros.next()) {
+				numeroRegistros++;
+			}
+
+			System.out.println("Número de registros: " + numeroRegistros);
+			System.out.println("CODIGO\tNOMBRE");
+
+			
+			MostrarDatosModulo();
+	
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
 	}
 
-	public static void Select() {
+	private static void MostrarDatosModulo() 
+	{
 		try {
 
 			String[] datos_coneString = cargarPropiedades();
-			String consulta = "SELECT dni, nombre, edad FROM Personas.PERSONA ";
+			String consulta = "SELECT * FROM modulo";
+			int indice = 1;
 			try (Connection connection = DriverManager.getConnection(datos_coneString[0], datos_coneString[1],
 					datos_coneString[2]);
 					Statement statement = connection.createStatement();
 					ResultSet resultSet = statement.executeQuery(consulta)) {
 				while (resultSet.next()) 
 				{
-						
-					String dni = resultSet.getString("dni");
-					String nombre = resultSet.getString("nombre");
-					int edad = resultSet.getInt("edad");
-					
-					Persona persona = new Persona(dni, nombre, edad);
-					
-					listPersonas.add(persona);
+				   String codigo = resultSet.getString("Codigo");
+				   String nombre = resultSet.getString("nombre");
+				   
+				   System.out.println("Nombre: " + nombre);
+				   System.out.println("Codigo: " + codigo);
+				 
 				}
 			} catch (SQLException e) {
 				e.printStackTrace(); 
@@ -125,59 +167,10 @@ public class ConexionJdbc {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
-	
-	public static int Insert() {
-		int filas = 0 ;
-		try {
-
-			
-			String[] datos_coneString = cargarPropiedades();
-			String consulta = "INSERT INTO Personas.PERSONA\n"
-					+ "(dni, nombre, edad)\n"
-					+ "VALUES(?, ?, ?); ";
-			try (Connection connection = DriverManager.getConnection(datos_coneString[0], datos_coneString[1],
-					datos_coneString[2]))
-			{
-				PreparedStatement prepare = connection.prepareStatement(consulta);
-				prepare.setString(1, "12345678F");
-				prepare.setString(2, "Hamza");
-				prepare.setInt(3, 22);
-				
-				filas = prepare.executeUpdate();
-				
-			} 
-			catch (SQLException e) {
-				e.printStackTrace(); 
-			}
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		return filas;
-
-	}
-
-
 	public static void main(String[] args) {
 
-		conexion();
-		CargarConexion();
-		Select();
-		for (Persona persona : listPersonas) 
-		{
-			System.out.println(persona);
-		}
-		if( Insert() == 0 )
-		{
-			System.out.println("No se ha insertado ninguna fila!!");
-		}
-		else 
-		{
-			System.out.println("Datos insertados, número de filas insertadas: " + Insert());
-		}
-		
+		SelectMetaDatos();
+
 	}
 }
