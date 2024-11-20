@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -26,7 +27,6 @@ public class Conexion {
 	private static String USER = "";
 	private static String PASSWORD = "";
 	private static String DRIVER_CLASS_NAME = "";
-	private static List<Persona> listPersonas = new ArrayList<Persona>();
 
 	// Método para cargar las propiedades desde un archivo
 
@@ -83,40 +83,49 @@ public class Conexion {
 		return conexion;
 	}
 
-	public static void CargarConexion() {
-
-		Connection conn = conexion();
-
-		if (conn != null) {
-			try {
-				System.out.println("Conexion Realizado con exito!!");
-				System.out.println("Operaciones sobre la base de datos...");
-				conn.close();
-
-			} catch (SQLException e) {
-				System.out.println("Error al trabajar con la conexión: " + e.getMessage());
-			}
-		}
-	}
-
-	public static void Select() {
+	public static int UpdateStock( int cantidad_vendida,  int id )
+	{
+		int filas = 0;
 		try {
 
 			String[] datos_coneString = cargarPropiedades();
-			String consulta = "SELECT dni, nombre, edad FROM Personas.PERSONA ";
+			String consulta = "UPDATE PRODUCTO SET stock =  stock -" + cantidad_vendida + " WHERE id_Producto = " + id ;
+			System.out.println(consulta);
+			try (Connection connection = DriverManager.getConnection(datos_coneString[0], datos_coneString[1],
+					datos_coneString[2])) {
+				PreparedStatement prepare = connection.prepareStatement(consulta);
+				filas = prepare.executeUpdate();
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return filas;
+	}
+	
+
+	public static void SelectCalcularDescuento(int id_producto) {
+		try {
+
+			String[] datos_coneString = cargarPropiedades();
+			String consulta = "SELECT PRODUCTO.precio , PRODUCTO.descuento FROM PRODUCTO WHERE PRODUCTO.id_Producto = " + id_producto;
 			try (Connection connection = DriverManager.getConnection(datos_coneString[0], datos_coneString[1],
 					datos_coneString[2]);
 					Statement statement = connection.createStatement();
 					ResultSet resultSet = statement.executeQuery(consulta)) {
-				while (resultSet.next()) {
+				while (resultSet.next())
+				{
 
-					String dni = resultSet.getString("dni");
-					String nombre = resultSet.getString("nombre");
-					int edad = resultSet.getInt("edad");
-
-					Persona persona = new Persona(dni, nombre, edad);
-
-					listPersonas.add(persona);
+					double precio = resultSet.getDouble("precio");
+					double descuento = resultSet.getDouble("descuento");
+					DecimalFormat formatDecimalFormat = new DecimalFormat("##.##");
+					double total = precio - ( (precio * descuento) / 100 ) ;
+					
+					System.out.println("Precio final  con el  descuento del producto: " + formatDecimalFormat.format(total));
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -128,18 +137,26 @@ public class Conexion {
 
 	}
 
-	public static int Insert() {
+	public static int Insert( Producto producto ) {
 		int filas = 0;
 		try {
 
 			String[] datos_coneString = cargarPropiedades();
-			String consulta = "INSERT INTO Personas.PERSONA\n" + "(dni, nombre, edad)\n" + "VALUES(?, ?, ?); ";
+			String consulta = "INSERT INTO `PRODUCTO`(`nombre_Producto`, `id_categoria`, `id_Talla`, `id_Color`, `id_Material`, `stock`, `precio`, `costo`, `estado`, `descuento`) VALUES (?,?,?,?,?,?,?,?,?,?); ";
 			try (Connection connection = DriverManager.getConnection(datos_coneString[0], datos_coneString[1],
 					datos_coneString[2])) {
 				PreparedStatement prepare = connection.prepareStatement(consulta);
-				prepare.setString(1, "12345678F");
-				prepare.setString(2, "Hamza");
-				prepare.setInt(3, 22);
+			
+			    prepare.setString(1, producto.getNombreProducto());
+			    prepare.setInt(2, producto.getIdCategoria());
+			    prepare.setInt(3, producto.getIdTalla());
+			    prepare.setInt(4, producto.getIdColor());
+			    prepare.setInt(5, producto.getIdMaterial());
+			    prepare.setInt(6, producto.getStock());
+			    prepare.setDouble(7, producto.getPrecio());
+			    prepare.setDouble(8, producto.getCosto());
+			    prepare.setString(9, producto.getEstado());
+			    prepare.setDouble(10, producto.getDescuento());
 
 				filas = prepare.executeUpdate();
 
@@ -161,16 +178,8 @@ public class Conexion {
 		try {
 
 			String[] datos_coneString = cargarPropiedades();
-			
-			
-			
-			
-			String consulta = "SELECT * FROM PRODUCTO WHERE id_categoria ="+categoria;
-			
-			System.out.println(consulta);
-			
-			
-			
+			String consulta = "SELECT * FROM PRODUCTO WHERE id_categoria =" + categoria;
+			System.out.println("Ejecutando consulta: "+ consulta);
 			try (Connection connection = DriverManager.getConnection(datos_coneString[0], datos_coneString[1],
 					datos_coneString[2]))
 			{
@@ -221,7 +230,6 @@ public class Conexion {
 					
 				}
 				
-				
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -232,26 +240,21 @@ public class Conexion {
 
 	}
 	
-	public static void SelectProductosCategoriaTalla(int categoria, String talla) {
+	public static void SelectProductosCategoriaTalla(String talla) {
 		try {
 
 			String[] datos_coneString = cargarPropiedades();
-			String consulta = "SELECT * FROM PRODUCTO WHERE id_categoria = ? and ; ";
+			String consulta = "SELECT PRODUCTO.precio , PRODUCTO.estado , PRODUCTO.nombre_Producto FROM PRODUCTO INNER JOIN TALLA T ON T.id_Talla = PRODUCTO.id_Talla WHERE T.talla = '" + talla + "'" ;
 			try (Connection connection = DriverManager.getConnection(datos_coneString[0], datos_coneString[1],
 					datos_coneString[2]))
 			{
-				
-				PreparedStatement prepare = connection.prepareStatement(consulta);
-				prepare.setInt(1, categoria);
-				
-				ResultSet rs = prepare.executeQuery();
+				Statement statement = connection.createStatement();
+				ResultSet rs = statement.executeQuery(consulta);
 				while (rs.next()) 
 				{
-					System.out.println("Id Producto:" + rs.getString("id_producto"));
 					System.out.println("Nombre producto: " + rs.getString("nombre_producto"));
 					System.out.println("Estado "+ rs.getString("estado"));
 					System.out.println("Precio: " + rs.getString("precio"));
-					
 				}
 				
 				
