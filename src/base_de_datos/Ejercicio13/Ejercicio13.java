@@ -34,10 +34,9 @@ public class Ejercicio13 {
 
 	public static void InsertarOrigen() {
 		File ruta = new File("ficheros/Script_Sql/script1.sql");
-		Path ruta1 = ruta.toPath();
 		String sql = "";
 		try {
-			sql = new String(Files.readAllBytes(ruta1));
+			sql = new String(Files.readAllBytes(ruta.toPath()));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
