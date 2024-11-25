@@ -1,4 +1,4 @@
-package base_de_datos.Ejercicio10;
+package base_de_datos.Ejercicio11;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -44,11 +44,12 @@ public class Conexion {
         int filas = 0;
         try {
             cargarPropiedades();
-            String consulta = "UPDATE PRODUCTO SET stock = stock -" + cantidad_vendida + " WHERE id_Producto = " + id;
-            System.out.println(consulta);
-            try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD)) {
-                Statement statement = connection.createStatement();
-                filas = statement.executeUpdate(consulta);
+            String consulta = "UPDATE PRODUCTO SET stock = stock - ? WHERE id_Producto = ?";
+            try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+                 PreparedStatement prs = connection.prepareStatement(consulta)) {
+                prs.setInt(1, cantidad_vendida);
+                prs.setInt(2, id);
+                filas = prs.executeUpdate();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -61,10 +62,11 @@ public class Conexion {
     public static void SelectCalcularDescuento(int id_producto) {
         try {
             cargarPropiedades();
-            String consulta = "SELECT PRODUCTO.precio, PRODUCTO.descuento FROM PRODUCTO WHERE PRODUCTO.id_Producto = " + id_producto;
+            String consulta = "SELECT precio, descuento FROM PRODUCTO WHERE id_Producto = ?";
             try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
-                 Statement statement = connection.createStatement();
-                 ResultSet resultSet = statement.executeQuery(consulta)) {
+                 PreparedStatement prs = connection.prepareStatement(consulta)) {
+                prs.setInt(1, id_producto);
+                ResultSet resultSet = prs.executeQuery();
                 while (resultSet.next()) {
                     double precio = resultSet.getDouble("precio");
                     double descuento = resultSet.getDouble("descuento");
@@ -84,20 +86,20 @@ public class Conexion {
         int filas = 0;
         try {
             cargarPropiedades();
-            String consulta = "INSERT INTO `PRODUCTO`(`nombre_Producto`, `id_categoria`, `id_Talla`, `id_Color`, `id_Material`, `stock`, `precio`, `costo`, `estado`, `descuento`) VALUES ('"
-                    + producto.getNombreProducto() + "', "
-                    + producto.getIdCategoria() + ", "
-                    + producto.getIdTalla() + ", "
-                    + producto.getIdColor() + ", "
-                    + producto.getIdMaterial() + ", "
-                    + producto.getStock() + ", "
-                    + producto.getPrecio() + ", "
-                    + producto.getCosto() + ", '"
-                    + producto.getEstado() + "', "
-                    + producto.getDescuento() + ");";
-            try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD)) {
-                Statement statement = connection.createStatement();
-                filas = statement.executeUpdate(consulta);
+            String consulta = "INSERT INTO PRODUCTO (nombre_Producto, id_categoria, id_Talla, id_Color, id_Material, stock, precio, costo, estado, descuento) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+                 PreparedStatement prs = connection.prepareStatement(consulta)) {
+                prs.setString(1, producto.getNombreProducto());
+                prs.setInt(2, producto.getIdCategoria());
+                prs.setInt(3, producto.getIdTalla());
+                prs.setInt(4, producto.getIdColor());
+                prs.setInt(5, producto.getIdMaterial());
+                prs.setInt(6, producto.getStock());
+                prs.setDouble(7, producto.getPrecio());
+                prs.setDouble(8, producto.getCosto());
+                prs.setString(9, producto.getEstado());
+                prs.setDouble(10, producto.getDescuento());
+                filas = prs.executeUpdate();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -110,11 +112,11 @@ public class Conexion {
     public static void SelectProductosCategoria0(int categoria) {
         try {
             cargarPropiedades();
-            String consulta = "SELECT * FROM PRODUCTO WHERE id_categoria =" + categoria;
-            System.out.println("Ejecutando consulta: " + consulta);
+            String consulta = "SELECT * FROM PRODUCTO WHERE id_categoria = ?";
             try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
-                 Statement st = connection.createStatement();
-                 ResultSet rs = st.executeQuery(consulta)) {
+                 PreparedStatement prs = connection.prepareStatement(consulta)) {
+                prs.setInt(1, categoria);
+                ResultSet rs = prs.executeQuery();
                 while (rs.next()) {
                     System.out.println("Id Producto:" + rs.getString("id_producto"));
                     System.out.println("Nombre producto: " + rs.getString("nombre_producto"));
@@ -132,11 +134,11 @@ public class Conexion {
     public static void SelectProductosCategoria(int categoria) {
         try {
             cargarPropiedades();
-            String consulta = "SELECT * FROM PRODUCTO WHERE id_categoria = ?; ";
-            try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD)) {
-                PreparedStatement prepare = connection.prepareStatement(consulta);
-                prepare.setInt(1, categoria);
-                ResultSet rs = prepare.executeQuery();
+            String consulta = "SELECT * FROM PRODUCTO WHERE id_categoria = ?";
+            try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+                 PreparedStatement prs = connection.prepareStatement(consulta)) {
+                prs.setInt(1, categoria);
+                ResultSet rs = prs.executeQuery();
                 while (rs.next()) {
                     System.out.println("Id Producto:" + rs.getString("id_producto"));
                     System.out.println("Nombre producto: " + rs.getString("nombre_producto"));
@@ -154,10 +156,11 @@ public class Conexion {
     public static void SelectProductosCategoriaTalla(String talla) {
         try {
             cargarPropiedades();
-            String consulta = "SELECT PRODUCTO.precio, PRODUCTO.estado, PRODUCTO.nombre_Producto FROM PRODUCTO INNER JOIN TALLA T ON T.id_Talla = PRODUCTO.id_Talla WHERE T.talla = '" + talla + "'";
+            String consulta = "SELECT PRODUCTO.precio, PRODUCTO.estado, PRODUCTO.nombre_Producto FROM PRODUCTO INNER JOIN TALLA T ON T.id_Talla = PRODUCTO.id_Talla WHERE T.talla = ?";
             try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
-                 Statement statement = connection.createStatement();
-                 ResultSet rs = statement.executeQuery(consulta)) {
+                 PreparedStatement prs = connection.prepareStatement(consulta)) {
+                prs.setString(1, talla);
+                ResultSet rs = prs.executeQuery();
                 while (rs.next()) {
                     System.out.println("Nombre producto: " + rs.getString("nombre_producto"));
                     System.out.println("Estado " + rs.getString("estado"));

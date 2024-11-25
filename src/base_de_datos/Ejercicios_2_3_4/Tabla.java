@@ -1,4 +1,4 @@
-package base_de_datos.Ejercicio1;
+package base_de_datos.Ejercicios_2_3_4;
 
 public class Tabla 
 {

@@ -1,4 +1,4 @@
-package base_de_datos;
+package base_de_datos.Ejercicio8;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -115,7 +115,7 @@ public class Ejercicio8 {
 	    	
 	        ProbarConexion();
 
-	        // Retrieve metadata about the database
+	        
 	        datos = conexion.getMetaData();
 	        System.out.println("\n--- Metadata de la Base de Datos ---");
 	        System.out.println("Producto BD: " + datos.getDatabaseProductName());
@@ -164,7 +164,6 @@ public class Ejercicio8 {
 	        }
 	        System.out.println();
 
-	        
 
 	    } catch (SQLException e) {
 	        System.err.println("Error al obtener los metadatos de la base de datos.");

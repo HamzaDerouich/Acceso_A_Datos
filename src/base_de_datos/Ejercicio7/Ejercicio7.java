@@ -89,6 +89,7 @@ public class Ejercicio7 {
 	public static void SelectMetaDatos() {
 		try {
 			// Obtener los metadatos de la base de datos
+			
 			DatabaseMetaData metaData = conexion().getMetaData();
 			ResultSet columnas = metaData.getColumns(null, null, "modulo", null);
 

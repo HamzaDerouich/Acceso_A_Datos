@@ -1,4 +1,4 @@
-package base_de_datos.Ejercicio1;
+package base_de_datos.Ejercicios_2_3_4;
 
 import java.sql.Statement;
 import java.io.File;
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Scanner;
 
-public class Ejercicio1 {
+public class Ejercicios {
 
 	// Propiedades de configuración de la base de datos
 	private static Properties propiedades = new Properties();

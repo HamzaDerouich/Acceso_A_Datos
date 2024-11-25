@@ -1,4 +1,4 @@
-package base_de_datos.Ejercicio5;
+package base_de_datos.Ejercicio6;
 
 import java.util.ArrayList;
 
