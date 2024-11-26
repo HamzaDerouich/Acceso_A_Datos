@@ -1,0 +1,19 @@
+{
+    "origenes": [
+        {
+            "id": 5,
+            "pais": "España",
+            "region": "Asturias"
+        },
+        {
+            "id": 6,
+            "pais": "México",
+            "region": "Yucatán"
+        },
+        {
+            "id": 7,
+            "pais": "Italia",
+            "region": "Toscana"
+        }
+    ]
+}
