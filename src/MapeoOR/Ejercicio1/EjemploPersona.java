@@ -16,6 +16,8 @@ public class EjemploPersona
 		try {
 		tx.begin();
 		
+	
+		
 		Persona persona = new Persona("92345678F","Raul",45,"669778964");
 		
 		em.persist(persona); // em es un EntityManager
