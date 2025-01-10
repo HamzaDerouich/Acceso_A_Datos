@@ -2,7 +2,6 @@ package MapeoOR.ClaveCompuesta;
 
 import javax.persistence.*;
 
-
 @Entity
 @Table( name = "alumno" )
 public class Alumno 
