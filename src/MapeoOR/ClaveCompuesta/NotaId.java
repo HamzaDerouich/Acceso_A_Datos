@@ -7,6 +7,7 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class NotaId implements Serializable {
 	
+
 	private int alumno;
 	private String modulo;
 	

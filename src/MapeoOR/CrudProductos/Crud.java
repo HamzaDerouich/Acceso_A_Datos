@@ -11,7 +11,8 @@ public class Crud {
 	static EntityManagerFactory emf = Persistence.createEntityManagerFactory("UPProductos");
 	static EntityManager em = emf.createEntityManager();
 
-	public void crearProducto(Producto producto) {
+	public void crearProducto(Producto producto) 
+	{
 		em.getTransaction().begin();
 		em.persist(producto);
 		em.getTransaction().commit();

@@ -1,4 +1,4 @@
-package MapeoOR.CrudProductos;
+package MapeoOR.ClaveCompuesta;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,31 +8,26 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "productos")
-public class Producto 
+@Table(name = "profesor")
+public class Profesor 
 {
-	
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private int id;	
 	
 	@Column(name = "nombre")
 	private String nombre;
 	
-	@Column(name = "precio")
-	private double precio;
 	
-	public Producto(int id, String nombre, double precio) {
+	public Profesor(int id, String nombre) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
-		this.precio = precio;
 	}
 	
-	public Producto()
-	{
-		
+	public Profesor() {
+
 	}
 
 	public int getId() {
@@ -51,16 +46,8 @@ public class Producto
 		this.nombre = nombre;
 	}
 
-	public double getPrecio() {
-		return precio;
-	}
-
-	public void setPrecio(double precio) {
-		this.precio = precio;
-	}
-
 	@Override
 	public String toString() {
-		return "Producto [id=" + id + ", nombre=" + nombre + ", precio=" + precio + "]";
+		return "Profesor [id=" + id + ", nombre=" + nombre + "]";
 	}
 }

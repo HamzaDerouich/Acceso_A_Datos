@@ -1,6 +1,12 @@
 package MapeoOR.ClaveCompuesta;
 
-import javax.persistence.*;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 
 @Entity
@@ -16,6 +22,9 @@ public class Alumno
 	
 	@Column( name = "curso" )
 	private String curso;
+	
+	@OneToMany(mappedBy = "alumno")
+	private List<Nota> notas;
 	
 	public Alumno(int id, String nombre, String curso) {
 		super();
@@ -52,6 +61,9 @@ public class Alumno
 	public String toString() {
 		return "Alumno [id=" + id + ", nombre=" + nombre + ", curso=" + curso + "]";
 	}
+	
+	
+
 	
 	
 
