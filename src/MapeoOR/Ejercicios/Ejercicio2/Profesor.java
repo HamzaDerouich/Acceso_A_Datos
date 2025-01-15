@@ -1,4 +1,4 @@
-package MapeoOR.Ejercicio2;
+package MapeoOR.Ejercicios.Ejercicio2;
 
 import javax.persistence.Column;
 

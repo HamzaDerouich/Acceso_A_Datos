@@ -1,4 +1,4 @@
-package MapeoOR.Ejercicio1;
+package MapeoOR.Ejercicios.Ejercicio1;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;

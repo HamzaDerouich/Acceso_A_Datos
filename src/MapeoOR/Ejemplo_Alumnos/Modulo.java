@@ -1,4 +1,4 @@
-package MapeoOR.Ejercicio13;
+package MapeoOR.Ejemplo_Alumnos;
 
 import java.io.Serializable;
 import java.util.List;

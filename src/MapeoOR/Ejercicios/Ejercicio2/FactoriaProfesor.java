@@ -1,11 +1,12 @@
-package MapeoOR.Ejercicio2;
+package MapeoOR.Ejercicios.Ejercicio2;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-import MapeoOR.Ejercicio1.Persona;
+import MapeoOR.Ejercicios.Ejercicio1.Persona;
+
 
 public class FactoriaProfesor 
 {

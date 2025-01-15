@@ -1,4 +1,4 @@
-package MapeoOR.Ejercicio13;
+package Ejemplo_Alumnos_Claves;
 
 public class Main 
 {
