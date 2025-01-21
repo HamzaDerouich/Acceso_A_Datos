@@ -1,41 +1,66 @@
 package MapeoOR.EjercicioPrestamos;
 
+<<<<<<< HEAD
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+=======
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+>>>>>>> f5df2523b21cb9e98f4b69e60557b5f037ab9115
 
 public class Crud {
 
 	static EntityManagerFactory emf = Persistence.createEntityManagerFactory("UPPrestamos");
 	static EntityManager em = emf.createEntityManager();
 
+<<<<<<< HEAD
 	// Mapeo Objeto Relacional
 
 	public void GuardarLibro(Libro libro) {
 
+=======
+	public static String guardarLibro(Libro libro) {
+>>>>>>> f5df2523b21cb9e98f4b69e60557b5f037ab9115
 		em.getTransaction().begin();
 		em.persist(libro);
 		em.getTransaction().commit();
 
+<<<<<<< HEAD
 	}
 
 	public void GuardarSocio(Socio socio) {
 
+=======
+		return "Libro registrado en la base de datos!!";
+	}
+	
+	public static String guardarSocio(Socio socio) {
+>>>>>>> f5df2523b21cb9e98f4b69e60557b5f037ab9115
 		em.getTransaction().begin();
 		em.persist(socio);
 		em.getTransaction().commit();
 
+<<<<<<< HEAD
 	}
 
 	public void GuardarPrestamo(Prestamos prestamo) {
 
+=======
+		return "Socio registrado en la base de datos!!";
+	}
+	
+	public static String guardarPrestamo(Prestamo prestamo) {
+>>>>>>> f5df2523b21cb9e98f4b69e60557b5f037ab9115
 		em.getTransaction().begin();
 		em.persist(prestamo);
 		em.getTransaction().commit();
 
+<<<<<<< HEAD
 	}
 
 	public Libro obtenerPrestamo(int id) {
@@ -72,6 +97,9 @@ public class Crud {
 		Query query = em.createNamedQuery("Prestamos.TotalPrestamos");
 		return query.getResultList().size();
 
+=======
+		return "Prestamo registrado en la base de datos!!";
+>>>>>>> f5df2523b21cb9e98f4b69e60557b5f037ab9115
 	}
 
 }
