@@ -1,3 +1,4 @@
+/*
 package MapeoOR.EjercicioPrestamos;
 
 import java.io.Serializable;
@@ -87,31 +88,32 @@ public class Socio implements Serializable {
 		this.numTelefono = numTelefono;
 	}
 
-<<<<<<< HEAD
 	public List<Prestamos> getListado_prestamos() {
 		return listado_prestamos;
 	}
 
 	public void setListado_prestamos(List<Prestamos> listado_prestamos) {
 		this.listado_prestamos = listado_prestamos;
-=======
 	public List<Prestamo> getListado_prestamos_socios() {
 		return listado_prestamos_socios;
 	}
 
 	public void setListado_prestamos_socios(List<Prestamo> listado_prestamos_socios) {
 		this.listado_prestamos_socios = listado_prestamos_socios;
->>>>>>> f5df2523b21cb9e98f4b69e60557b5f037ab9115
 	}
 
 	@Override
 	public String toString() {
-<<<<<<< HEAD
 		return "Socio [dni=" + dni + ", nombre=" + nombre + ", numTelefono=" + numTelefono + "]";
-=======
 		return "Socio [dni=" + dni + ", nombre=" + nombre + ", numTelefono=" + numTelefono
 				+ ", listado_prestamos_socios=" + listado_prestamos_socios + "]";
->>>>>>> f5df2523b21cb9e98f4b69e60557b5f037ab9115
 	}
 
 }
+
+
+	public void setNumTelefono(String telefono) {
+		// TODO Auto-generated method stub
+		
+	}
+*/

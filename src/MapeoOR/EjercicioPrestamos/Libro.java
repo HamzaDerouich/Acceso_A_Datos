@@ -1,3 +1,4 @@
+/*
 package MapeoOR.EjercicioPrestamos;
 
 import java.io.Serializable;
@@ -119,3 +120,4 @@ public class Libro implements Serializable {
 	}
 
 }
+*/

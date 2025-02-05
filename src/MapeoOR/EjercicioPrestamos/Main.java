@@ -1,3 +1,4 @@
+/*
 package MapeoOR.EjercicioPrestamos;
 
 import java.util.Scanner;
@@ -118,3 +119,4 @@ public class Main {
 	}
 	
 }
+*/

@@ -1,3 +1,4 @@
+/*
 package MapeoOR.EjercicioPrestamos;
 
 import java.io.Serializable;
@@ -85,3 +86,4 @@ public class Prestamo implements Serializable {
 	}
 
 }
+*/
